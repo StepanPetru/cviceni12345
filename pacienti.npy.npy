@@ -1,0 +1,26 @@
+#%%
+import numpy as np
+
+data = np.load("pacienti.npy")
+
+print(data.shape)
+print(data[:5])
+#%%
+print("Prumer:", np.mean(data, axis=0))
+print("Std:", np.std(data, axis=0))
+#%%
+hypertenze = data[data[:, 0] >= 140]
+
+print(len(hypertenze))
+print(np.mean(hypertenze[:, 0]))
+#%%
+pulzni_tlak = data[:, 0] - data[:, 1]
+
+data_nove = np.column_stack((data, pulzni_tlak))
+
+print(data_nove[:5])
+#%%
+idx = np.argmax(data[:, 2])
+
+print(idx)
+print(data[idx])
